@@ -8,7 +8,6 @@ var form = document.getElementsByTagName ('form')
 var inputFirst = document.querySelector('input:nth-child(1)')
 var inputSecond = document.querySelector('input:nth-child(2)')
 var li = document.getElementsByTagName('li')
-
 header.style.backgroundColor = "#F9F6EE"
 
 headerTitle.textContent = "Semicolon Gang"
@@ -37,6 +36,7 @@ form[0].style.justifyContent = "center"
 
 inputFirst.style.backgroundColor = "#252422"
 inputFirst.style.fontFamily = "Poppins"
+inputFirst.setAttribute('value', '1');
 
 inputSecond.style.fontFamily = "Inter"
 inputSecond.style.color = "#252422"
@@ -55,4 +55,44 @@ li[0].textContent = "Prench"
 li[1].textContent = "Alyssa"
 li[2].textContent = "Kym"
 li[3].textContent = "Jan Leinzer"
-console.log(ul)
+
+
+
+var newList = document.createElement('li');
+var newMem = document.createTextNode('Christian');
+
+newList.className = "list-group-item";
+newList.appendChild(newMem);
+newList.style.backgroundColor = "#252422"
+newList.style.color = "#00CCCC"
+newList.style.fontFamily = "Poppins"
+newList.style.textAlign = "center"
+newList.style.borderBottom = "3px solid #2E3133"
+
+var ul = document.querySelector('.container #main ul')
+
+function insertAfter(newNode, existingNode) {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+insertAfter(newList, ul.lastElementChild);
+
+var newBtn = document.createElement('button')
+var main = document.getElementById('main')
+
+newBtn.className = "btn btn-primary"
+newBtn.id = "button"
+newBtn.textContent = "Click Me"
+newBtn.style.margin = "1rem 0"
+newBtn.style.fontFamily = "Inter"
+newBtn.style.color = "#252422"
+newBtn.style.backgroundColor = "#00CCCC"
+
+insertAfter(newBtn, main.lastElementChild)
+console.log(newBtn)
+
+newBtn.addEventListener('mousemove', buttonClick)
+
+function buttonClick(e) {
+    newBtn.style.color = "rgb("+e.offsetX+", 40,"+e.offsetY+")";
+}
